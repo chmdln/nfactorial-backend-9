@@ -35,6 +35,9 @@ users_repo = UsersRepository()
 carts_repo = CartsRepository()
 
 
+@app.get("/ping")
+async def ping():
+    return {"status": "ok"}
 
 
 @app.get("/")
