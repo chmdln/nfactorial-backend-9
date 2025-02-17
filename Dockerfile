@@ -13,9 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the entire project (including `app/`, `alembic/`, `alembic.ini`)
 COPY . .
 
-RUN alembic upgrade head
-
 # Run Alembic migrations before starting the app
-# CMD ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+
 
