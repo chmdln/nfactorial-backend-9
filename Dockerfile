@@ -4,13 +4,13 @@ FROM python:3
 # Set the working directory
 WORKDIR /app
 
-# Copy dependencies first (for better caching)
+# Copy dependencies first
 COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project (including `app/`, `alembic/`, `alembic.ini`)
+# Copy the entire project
 COPY . .
 
 # Run Alembic migrations before starting the app
