@@ -336,6 +336,12 @@ def save_user_purchase(
         )
 
     cart = carts_repo.get_cart(db, user_id)
+    if not cart:
+        raise HTTPException(
+            status_code=404, 
+            detail="Cart not found."
+        )
+    
     for cart_item in cart.items:
         flower_id = cart_item.flower_id
         flower = flowers_repo.get_flower_by_id(db, flower_id)
